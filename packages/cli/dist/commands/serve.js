@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 const commander_1 = require("commander");
 exports.serveCommand = new commander_1.Command()
-    .command("serve")
+    .command("serve [filename]")
     .description("Open a file for editing")
-    .action(() => {
-    console.log("Getting Ready to serve a file");
+    .option("-p, --port <port>", "Port to listen on", "4005")
+    .action((filename = "note.js", options) => {
+    console.log(filename, options);
 });
