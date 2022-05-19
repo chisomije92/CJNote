@@ -2,10 +2,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.serveCommand = void 0;
 const commander_1 = require("commander");
+const local_api_1 = require("local-api");
 exports.serveCommand = new commander_1.Command()
     .command("serve [filename]")
     .description("Open a file for editing")
     .option("-p, --port <port>", "Port to listen on", "4005")
     .action((filename = "note.js", options) => {
-    console.log(filename, options);
+    (0, local_api_1.serve)(Number(options.port), filename, "./");
 });
