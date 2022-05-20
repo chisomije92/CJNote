@@ -5,7 +5,11 @@ export const serveCommand = new Command()
   .command("serve [filename]")
   .description("Open a file for editing")
   .option("-p, --port <port>", "Port to listen on", "4005")
-  .action((filename = "note.js", options) => {
-    const dir = path.join(process.cwd(), path.dirname(filename));
-    serve(Number(options.port), path.basename(filename), dir);
+  .action(async (filename = "note.js", options) => {
+    try {
+      const dir = path.join(process.cwd(), path.dirname(filename));
+      await serve(Number(options.port), path.basename(filename), dir);
+    } catch (err: any) {
+      console.log("Here is the problem: ", err.message);
+    }
   });
