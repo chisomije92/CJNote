@@ -12,6 +12,7 @@ function App() {
   return (
     <Provider store={store}>
       <div>
+        <h1>Test</h1>
         <CellList />
       </div>
     </Provider>
