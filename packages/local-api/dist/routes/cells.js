@@ -37,6 +37,7 @@ const createCellRouter = (filename, dir) => {
     router.post("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const { cells } = req.body;
         yield promises_1.default.writeFile(fullPath, JSON.stringify(cells), "utf8");
+        res.send({ status: "ok" });
     }));
     return router;
 };
