@@ -28,6 +28,7 @@ const createCellRouter = (filename, dir) => {
         catch (err) {
             if (err.code === "ENOENT") {
                 yield promises_1.default.writeFile(fullPath, "[]", { encoding: "utf-8" });
+                res.send([]);
             }
             else {
                 throw err;
