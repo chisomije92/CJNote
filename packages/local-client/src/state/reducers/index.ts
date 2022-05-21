@@ -1,4 +1,4 @@
-import { configureStore, MiddlewareArray } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import bundleSlice, { bundleSliceActions } from "./bundleReducers";
 import { AnyAction } from "redux";
 import cellsSlice, { cellsSliceActions } from "./cellReducers";

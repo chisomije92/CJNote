@@ -1,4 +1,4 @@
-import { Cell, CellType } from "../cell";
+import { CellType } from "../cell";
 
 export type Direction = "up" | "down";
 

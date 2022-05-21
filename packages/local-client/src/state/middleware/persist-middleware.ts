@@ -10,19 +10,29 @@ const rootReducer = combineReducers({
 
 type RootState = ReturnType<typeof rootReducer>;
 
-export const persistMiddleware: Middleware<{}, RootState> =
-  ({ dispatch, getState }) =>
-  (next) =>
-  (action) => {
-    next(action);
-    if (
-      [
-        cellsSliceActions.deleteCell.type,
-        cellsSliceActions.updateCell.type,
-        cellsSliceActions.moveCell.type,
-        cellsSliceActions.insertCellAfter.type,
-      ].includes(action.type)
-    ) {
-      saveCells()(dispatch, getState, action);
-    }
+export const persistMiddleware: Middleware<{}, RootState> = ({
+  dispatch,
+  getState,
+}) => {
+  let timer: NodeJS.Timeout;
+  return (next) => {
+    return (action) => {
+      next(action);
+      if (
+        [
+          cellsSliceActions.deleteCell.type,
+          cellsSliceActions.updateCell.type,
+          cellsSliceActions.moveCell.type,
+          cellsSliceActions.insertCellAfter.type,
+        ].includes(action.type)
+      ) {
+        if (timer) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+          saveCells()(dispatch, getState, action);
+        }, 250);
+      }
+    };
   };
+};
