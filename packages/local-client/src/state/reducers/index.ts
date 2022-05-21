@@ -50,27 +50,22 @@ export const fetchCells = (): ThunkAction<
   };
 };
 
-// console.log(createBundle("1", ""));
-// store.dispatch(createBundle("1", ""));
-
-// export const createBundle = (
-//   cellId: string,
-//   input: string
-// ): ThunkAction<void, RootState, unknown, AnyAction> => {
-//   return async (dispatch) => {
-//     dispatch(bundleSliceActions.bundleStart({ cellId }));
-//     const result = await bundler(input);
-//     dispatch(bundleSliceActions.bundleComplete({ cellId, bundle: result }));
-//   };
-// };
-
-// store.dispatch({
-//   type: "cells/insertCellBefore",
-//   payload: {
-//     id: null,
-//     type: "code",
-//   },
-// });
+export const saveCells = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  AnyAction
+> => {
+  return async (dispatch, getState) => {
+    const { data, order } = getState().cells;
+    const cells = order.map((id) => data[id]);
+    try {
+      await axios.post("/cells", { cells });
+    } catch (err: any) {
+      dispatch(cellsSliceActions.saveCellsError(err.message));
+    }
+  };
+};
 
 // store.dispatch({
 //   type: "cells/insertCellBefore",

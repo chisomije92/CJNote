@@ -26,6 +26,11 @@ const cellsSlice = createSlice({
   name: "cells",
   initialState,
   reducers: {
+    saveCellsError(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+      return state;
+    },
+
     fetchCells(state: CellState) {
       state.loading = true;
       state.error = null;
