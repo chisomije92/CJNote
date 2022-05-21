@@ -12,22 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createCellRouter = void 0;
+exports.createCellsRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const promises_1 = __importDefault(require("fs/promises"));
 const path_1 = __importDefault(require("path"));
-const createCellRouter = (filename, dir) => {
+const createCellsRouter = (filename, dir) => {
     const router = express_1.default.Router();
     router.use(express_1.default.json());
     const fullPath = path_1.default.join(dir, filename);
     router.get("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
+            // Read the file
             const result = yield promises_1.default.readFile(fullPath, { encoding: "utf-8" });
             res.send(JSON.parse(result));
         }
         catch (err) {
             if (err.code === "ENOENT") {
-                yield promises_1.default.writeFile(fullPath, "[]", { encoding: "utf-8" });
+                yield promises_1.default.writeFile(fullPath, "[]", "utf-8");
                 res.send([]);
             }
             else {
@@ -36,10 +37,13 @@ const createCellRouter = (filename, dir) => {
         }
     }));
     router.post("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        // Take the list of cells from the request obj
+        // serialize them
         const { cells } = req.body;
-        yield promises_1.default.writeFile(fullPath, JSON.stringify(cells), "utf8");
+        // Write the cells into the file
+        yield promises_1.default.writeFile(fullPath, JSON.stringify(cells), "utf-8");
         res.send({ status: "ok" });
     }));
     return router;
 };
-exports.createCellRouter = createCellRouter;
+exports.createCellsRouter = createCellsRouter;

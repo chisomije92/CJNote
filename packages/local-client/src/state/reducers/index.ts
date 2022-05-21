@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, MiddlewareArray } from "@reduxjs/toolkit";
 import bundleSlice, { bundleSliceActions } from "./bundleReducers";
 import { AnyAction } from "redux";
 import cellsSlice, { cellsSliceActions } from "./cellReducers";
@@ -7,13 +7,15 @@ import { ThunkAction } from "@reduxjs/toolkit";
 import { bundler } from "../../bundler";
 import axios from "axios";
 import { Cell } from "../cell";
+import { persistMiddleware } from "../middleware/persist-middleware";
 const store = configureStore({
   reducer: {
     cells: cellsSlice.reducer,
     bundle: bundleSlice.reducer,
   },
 
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(thunk).prepend(persistMiddleware),
 });
 
 export default store;
@@ -56,8 +58,11 @@ export const saveCells = (): ThunkAction<
   unknown,
   AnyAction
 > => {
-  return async (dispatch, getState) => {
-    const { data, order } = getState().cells;
+  return async (dispatch, getState: () => RootState) => {
+    const {
+      cells: { data, order },
+    } = getState();
+
     const cells = order.map((id) => data[id]);
     try {
       await axios.post("/cells", { cells });
@@ -66,17 +71,3 @@ export const saveCells = (): ThunkAction<
     }
   };
 };
-
-// store.dispatch({
-//   type: "cells/insertCellBefore",
-//   payload: {
-//     id: null,
-//     type: "code",
-//   },
-// });
-
-// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
-// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "text" }));
-// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
-
-// console.log(store.getState());

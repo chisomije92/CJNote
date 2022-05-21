@@ -1,7 +1,7 @@
 import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import path from "path";
-import { createCellRouter } from "./routes/cells";
+import { createCellsRouter } from "./routes/cells";
 export const serve = (
   port: number,
   filename: string,
@@ -9,8 +9,8 @@ export const serve = (
   useProxy: boolean
 ) => {
   const app = express();
-  const packagePath = require.resolve("local-client/build/index.html");
-  app.use(createCellRouter(filename, dir));
+
+  app.use(createCellsRouter(filename, dir));
   if (useProxy) {
     app.use(
       createProxyMiddleware({
@@ -20,6 +20,7 @@ export const serve = (
       })
     );
   } else {
+    const packagePath = require.resolve("local-client/build/index.html");
     app.use(express.static(path.dirname(packagePath)));
   }
 
