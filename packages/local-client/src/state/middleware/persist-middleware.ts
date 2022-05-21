@@ -1,5 +1,5 @@
 import { combineReducers, Middleware } from "redux";
-import { saveCells } from "../reducers";
+import { saveCells } from "../index";
 import bundleSlice from "../reducers/bundleReducers";
 import cellsSlice, { cellsSliceActions } from "../reducers/cellReducers";
 

@@ -38,8 +38,8 @@ const cellsSlice = createSlice({
     },
 
     fetchCellsComplete(state: CellState, action: PayloadAction<Cell[]>) {
-      // state.loading = false;
-      // state.error = null;
+      state.loading = false;
+      state.error = null;
       state.order = action.payload.map((cell) => cell.id);
       state.data = action.payload.reduce((acc, cell) => {
         acc[cell.id] = cell;
