@@ -5,7 +5,8 @@ import cellsSlice, { cellsSliceActions } from "./cellReducers";
 import thunk from "redux-thunk";
 import { ThunkAction } from "@reduxjs/toolkit";
 import { bundler } from "../../bundler";
-
+import axios from "axios";
+import { Cell } from "../cell";
 const store = configureStore({
   reducer: {
     cells: cellsSlice.reducer,
@@ -29,6 +30,23 @@ export const createBundle = (
 
     const result = await bundler(input);
     dispatch(bundleSliceActions.bundleComplete({ cellId, bundle: result }));
+  };
+};
+
+export const fetchCells = (): ThunkAction<
+  void,
+  RootState,
+  unknown,
+  AnyAction
+> => {
+  return async (dispatch) => {
+    dispatch(cellsSliceActions.fetchCells());
+    try {
+      const { data }: { data: Cell[] } = await axios.get("/cells");
+      dispatch(cellsSliceActions.fetchCellsComplete(data));
+    } catch (err: any) {
+      dispatch(cellsSliceActions.fetchCellsError(err.message));
+    }
   };
 };
 

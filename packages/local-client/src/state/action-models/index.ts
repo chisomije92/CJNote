@@ -1,4 +1,4 @@
-import { CellType } from "../cell";
+import { Cell, CellType } from "../cell";
 
 export type Direction = "up" | "down";
 
@@ -32,3 +32,15 @@ export interface BundleCompleteActionModel {
     err: string;
   };
 }
+
+// export interface FetchCellsActionModel{
+
+// }
+
+// export interface FetchCellsCompleteActionModel{
+// payload : Cell[]
+// }
+
+// export interface FetchCellsErrorActionModel{
+// payload : string
+// }
