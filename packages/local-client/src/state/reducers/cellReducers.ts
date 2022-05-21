@@ -31,15 +31,15 @@ const cellsSlice = createSlice({
       return state;
     },
 
-    fetchCells(state: CellState) {
+    fetchCellsStart(state: CellState) {
       state.loading = true;
       state.error = null;
       return state;
     },
 
     fetchCellsComplete(state: CellState, action: PayloadAction<Cell[]>) {
-      state.loading = false;
-      state.error = null;
+      // state.loading = false;
+      // state.error = null;
       state.order = action.payload.map((cell) => cell.id);
       state.data = action.payload.reduce((acc, cell) => {
         acc[cell.id] = cell;

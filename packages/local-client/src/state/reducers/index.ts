@@ -40,7 +40,7 @@ export const fetchCells = (): ThunkAction<
   AnyAction
 > => {
   return async (dispatch) => {
-    dispatch(cellsSliceActions.fetchCells());
+    dispatch(cellsSliceActions.fetchCellsStart());
     try {
       const { data }: { data: Cell[] } = await axios.get("/cells");
       dispatch(cellsSliceActions.fetchCellsComplete(data));
@@ -75,8 +75,8 @@ export const saveCells = (): ThunkAction<
 //   },
 // });
 
-store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
-store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "text" }));
-store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
+// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
+// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "text" }));
+// store.dispatch(cellsSliceActions.insertCellAfter({ id: null, type: "code" }));
 
 // console.log(store.getState());
