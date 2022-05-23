@@ -1,8 +1,13 @@
 {
   "name": "@cjnote/local-client",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "build"
+  ],
+  "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.1.1",
     "@monaco-editor/react": "^4.4.5",
     "@reduxjs/toolkit": "^1.8.1",
@@ -10,7 +15,6 @@
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.0",
-    "@types/jscodeshift": "0.7.2",
     "@types/node": "^16.11.33",
     "@types/prettier": "^2.6.0",
     "@types/react": "^18.0.9",
@@ -20,7 +24,6 @@
     "axios": "^0.27.2",
     "bulmaswatch": "^0.8.1",
     "esbuild-wasm": "^0.14.38",
-    "jscodeshift": "0.11.0",
     "localforage": "^1.10.0",
     "monaco-editor": "^0.33.0",
     "prettier": "^2.6.2",
