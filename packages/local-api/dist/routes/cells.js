@@ -22,13 +22,12 @@ const createCellsRouter = (filename, dir) => {
     const fullPath = path_1.default.join(dir, filename);
     router.get("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            // Read the file
             const result = yield promises_1.default.readFile(fullPath, { encoding: "utf-8" });
             res.send(JSON.parse(result));
         }
         catch (err) {
             if (err.code === "ENOENT") {
-                yield promises_1.default.writeFile(fullPath, "[]", "utf-8");
+                yield promises_1.default.writeFile(fullPath, `[]`, "utf-8");
                 res.send([]);
             }
             else {
@@ -37,10 +36,7 @@ const createCellsRouter = (filename, dir) => {
         }
     }));
     router.post("/cells", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-        // Take the list of cells from the request obj
-        // serialize them
         const { cells } = req.body;
-        // Write the cells into the file
         yield promises_1.default.writeFile(fullPath, JSON.stringify(cells), "utf-8");
         res.send({ status: "ok" });
     }));

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  InsertCellBeforeActionModel,
+  InsertCellAfterActionModel,
   MoveCellActionModel,
   UpdateCellActionModel,
 } from "../action-models";
@@ -67,7 +67,7 @@ const cellsSlice = createSlice({
     },
     insertCellAfter(
       state: CellState,
-      action: PayloadAction<InsertCellBeforeActionModel>
+      action: PayloadAction<InsertCellAfterActionModel>
     ) {
       const cell: Cell = {
         content: "",

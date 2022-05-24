@@ -7,11 +7,7 @@ export interface MoveCellActionModel {
   direction: Direction;
 }
 
-// export interface DeleteCellActionModel {
-//     id: string;
-// }
-
-export interface InsertCellBeforeActionModel {
+export interface InsertCellAfterActionModel {
   id: string | null;
   type: CellType;
 }
@@ -32,15 +28,3 @@ export interface BundleCompleteActionModel {
     err: string;
   };
 }
-
-// export interface FetchCellsActionModel{
-
-// }
-
-// export interface FetchCellsCompleteActionModel{
-// payload : Cell[]
-// }
-
-// export interface FetchCellsErrorActionModel{
-// payload : string
-// }

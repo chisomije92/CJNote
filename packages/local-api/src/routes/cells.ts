@@ -16,13 +16,12 @@ export const createCellsRouter = (filename: string, dir: string) => {
 
   router.get("/cells", async (req, res) => {
     try {
-      // Read the file
       const result = await fs.readFile(fullPath, { encoding: "utf-8" });
 
       res.send(JSON.parse(result));
     } catch (err: any) {
       if (err.code === "ENOENT") {
-        await fs.writeFile(fullPath, "[]", "utf-8");
+        await fs.writeFile(fullPath, `[]`, "utf-8");
         res.send([]);
       } else {
         throw err;
