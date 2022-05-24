@@ -52,7 +52,7 @@ const CodeCell: React.FC<CodeCellProps> = ({ cell }) => {
       >
         <Resizable direction="horizontal">
           <CodeEditor defaultValue={cell.content} passValue={changeHandler} />
-        </Resizable>{" "}
+        </Resizable>
         <div className="progress-wrapper">
           {!bundle || bundle.loading ? (
             <div className="progress-cover">
