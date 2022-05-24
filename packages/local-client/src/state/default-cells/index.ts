@@ -9,7 +9,7 @@ export let defaultCell: Cell[] = [
   },
   {
     content:
-      "import { useState } from 'react';\n\nconst Counter = () => {\n  const [count, setCount] = useState(0);\n  return (\n    <div>\n      <button onClick={() => setCount(count + 1)}></button>\n      <h3>Count: {count} </h3>\n    </div>\n  );\n};\n\n// Display a variable or React Component by calling 'show'\nshow(<Counter/>);",
+      "import { useState } from 'react';\n\nconst Counter = () => {\n  const [count, setCount] = useState(0);\n  return (\n    <div>\n      <button onClick={() => setCount(count + 1)}>Click</button>\n      <h3>Count: {count} </h3>\n    </div>\n  );\n};\n\n// Display a variable or React Component by calling 'show'\nshow(<Counter/>);",
     type: "code",
     id: "sq7p2",
   },
