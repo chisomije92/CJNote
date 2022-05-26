@@ -1,6 +1,6 @@
 # CJ-NOTE CLI
 
-This is a command line interface that launches on command, an interactive development environment that enables the user to write and document Javascript code conveniently.
+This is a command line interface that launches on command, an interactive development environment that enables the user to write and document Javascript code conveniently. The web app of this CLI can be found at [CJ-Note Web](https://cj-note-client.vercel.app/)
 
 ![CJnote-client](https://user-images.githubusercontent.com/68636386/170349196-e76ce0da-b335-464b-9459-5fdab55fbcee.png)
 
