@@ -1,4 +1,4 @@
-##CJ-NOTE CLI
+# CJ-NOTE CLI
 
 This is a command line interface that launches on command, an interactive development environment that enables the user to write and document Javascript code conveniently.
 
@@ -6,13 +6,14 @@ This is a command line interface that launches on command, an interactive develo
 
 ## Table of contents
 
-- [Table of contents](#table-of-contents)
-- [Overview](#overview)
-  - [Links](#links)
-  - [Installation and Setup Instructions](#installation-and-setup-instructions)
-- [My process](#my-process)
-  - [Built with](#built-with)
-- [Author](#author)
+- [CJ-NOTE CLI](#cj-note-cli)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [Links](#links)
+    - [Installation and Setup Instructions](#installation-and-setup-instructions)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+  - [Author](#author)
 
 ## Overview
 
