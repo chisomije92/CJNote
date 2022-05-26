@@ -35,11 +35,11 @@ Please note that _cjnote serve_ is the default command hence the command indicat
 
 To customize the port and/or filename, the following commands should be used instead:
 
-- _cjnote serve [filename]_ - for example, _cjnote serve example.js_ will create and save data on example.js in the directory on default port 4005.
-- _cjnote serve --port [port]_ - for example, _cjnote serve --port 4050_ will start up the app on server _http://localhost:4050/_ but on store data in default file note.js
+- _cjnote serve [filename]_ - for example, _cjnote serve example.js_ will create and save data in specified file - _example.js_ in the directory on default port 4005.
+- _cjnote serve --port [port]_ - for example, _cjnote serve --port 4050_ will start up the app on server _http://localhost:4050/_ but on store data in default file _note.js_
 - _cjnote serve [filename] --port [port]_ - _cjnote serve example.js --port 4050_ will start up the app on server _http://localhost:4050/_ and save data in specified file _example.js_
 
-In the event that you do not wish to install this package generally, you may run the command _npx cjnote serve_ to download and use the package instantly. Do note that the following rules on usage applies in this instance but the command starts with _npx_ instead rather than the package name.
+In the event that you do not wish to install this package generally, you may run the command _npx cjnote serve_ to download and use the package instantly. Do note that the above rules on usage applies in this instance but the command starts with _npx_ instead rather than the package name.
 
 ## My process
 
