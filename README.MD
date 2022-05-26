@@ -1,4 +1,4 @@
-CJ-NOTE CLI
+##CJ-NOTE CLI
 
 This is a command line interface that launches on command, an interactive development environment that enables the user to write and document Javascript code conveniently.
 
